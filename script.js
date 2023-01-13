@@ -5,47 +5,68 @@ const amountValueInput = document.getElementById('amount-value')
 const customInput = document.querySelector('.custom')
 const newValueAmount = document.getElementById('amount-value')
 const newValueTotal = document.getElementById('total-value')
-NaN == '0'
-// const resetBtn = document.getElementById('reset')
+const resetBtn = document.getElementById('reset')
 
-// resetBtn.addEventListener('click', () => {
-//   parseFloat(billValueInput.value) == 0
-//   parseFloat(peopleNumberInput.value) == 0
-//   console.log('oi')
+billValueInput.addEventListener('input', billInput)
 
-// })
+peopleNumberInput.addEventListener('input', peopleInput)
 
-
-percentSelectInput.forEach(btn => {
-  btn.addEventListener('click', (event) => {
-    percentSelectInput.forEach(removeSelect => {
-      removeSelect.classList.remove('select')
-    })
-    event.target.classList.add('select');
-    calcular();
-  })
+percentSelectInput.forEach(item => {
+  item.addEventListener('click', handleclick)
 })
 
+customInput.addEventListener('input', () => {
+  calcular()
+})
 
-const calcular = () => {
-  const billValue = parseFloat(billValueInput.value)
-  const peopleNumber = parseFloat(peopleNumberInput.value)
-  const percentSelect = parseFloat(document.querySelector('.percent-value .select').value);
-  const totalAmount = parseFloat((billValue * (percentSelect/100))).toFixed(2)
-  const totalPerson = parseFloat((billValue + (billValue * (percentSelect/100)))/peopleNumber).toFixed(2)
-  newValueAmount.innerHTML = '$' + totalAmount
-  newValueTotal.innerHTML = '$' + totalPerson
+resetBtn.addEventListener('click', reset)
 
+let billValue = 0.0
+let peopleNumber = 1
+
+
+function billInput() {
+  billValue = parseFloat(billValueInput.value)
+  calcular()
+}
+
+function peopleInput() {
+  peopleNumber = parseFloat(peopleNumberInput.value)
+  if (peopleNumber < 1) {
+    peopleNumber.style.border = '2px solid red'
+  }
+  calcular()
 }
 
 
+function handleclick(event) {
+  percentSelectInput.forEach(removeSelect => {
+    removeSelect.classList.remove('select')
+    customInput.value = ""
+  })
+  event.target.classList.add('select');
+  calcular()
+}
 
-customInput.addEventListener('keyup', (event) => {
-  calcular()
-})
-peopleNumberInput.addEventListener('keyup', (event) => {
-  calcular()
-})
-billValueInput.addEventListener('keyup', (event) => {
-  calcular()
-})
+
+function calcular() {
+  if (peopleNumber >= 1) {
+    let percentSelect = parseFloat(document.querySelector('.percent-value .select').value);
+    let totalAmount = parseFloat((billValue * (percentSelect/100))).toFixed(2);
+    let totalPerson = parseFloat((billValue + (billValue * (percentSelect/100)))/peopleNumber).toFixed(2);
+    newValueAmount.innerHTML = '$' + totalAmount;
+    newValueTotal.innerHTML = '$' + totalPerson;
+  }
+}
+
+
+function reset() {
+  billValueInput.value = ''
+  peopleNumberInput.value = ''
+  newValueAmount.innerHTML = '$0.00';
+  newValueTotal.innerHTML = '$0.00';
+  customInput.value = ''
+  percentSelectInput.forEach(item => {
+    item.classList.remove('select')
+  })
+}

@@ -24,56 +24,39 @@ input[type=number] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
 .logo {
-  padding-top: 8rem;
-  padding-bottom: 6rem;
+  padding-top: 5rem;
+  padding-bottom: 4rem;
 
 }
 
 .content {
-  /* max-width: 920px; */
-  /* width: 1000px; */
+  max-width: 920px;
   min-height: 480px;
   background-color: #fff;
   border-radius: 30px;
   display: flex;
   flex-direction: row;
+  padding: 32px;
 }
 
-/* @media(max-width: 950px) {
-  .content {
-    flex-direction: column;
-  }
-  .container {
-    width: 100%;
-  }
-  .result {
-    margin: 40px;
-  }
-  .percent-value {
-    grid-template-columns: 1fr 1fr;
-  }
-} */
 
 .bill {
   width: 100%;
   max-width: 430px;
   border-radius: 20px;
-  margin: 32px 16px 32px 32px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: white;
+  justify-content: space-between;
 }
 
-.value-input {
-  padding: 15px;
-}
 
-.value-input > span {
+.value-input label {
   font: 700 16px 'Space mono';
   color: var(--g2);
   margin-bottom: 10px;
@@ -82,7 +65,6 @@ input[type=number] {
 
 .input {
   position: relative;
-  /* max-width: 500px; */
 }
 
 .input img {
@@ -112,17 +94,13 @@ input[type=number] {
 .bill-number::placeholder {
   font: 700 24px 'Space mono';
   color: #9FB7B7;
-  /* margin-right: 20px; */
 }
 
 
 /* SELECT TIP % */
 
-.select-tip {
-  padding: 30px 15px;
-}
 
-.select-tip span {
+.select-tip label {
   font: 700 16px 'Space mono';
   color: hsl(186, 14%, 43%);
   margin-bottom: 14px;
@@ -136,15 +114,11 @@ input[type=number] {
 }
 
 .percent-value button {
-  /* width: 100%; */
-  max-width: 150px;
+  width: 100%;
   height: 48px;
   background-color: hsl(183, 100%, 15%);
   font: 700 24px 'Space mono';
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -179,18 +153,14 @@ input[type=number] {
 
 .percent-value input::placeholder {
   color:hsl(186, 14%, 43%);
-  /* text-align: center; */
+  text-align: center;
   margin-left: 6px;
 }
 
 
 /* Number of People */
 
-.number-people {
-  padding: 15px;
-}
-
-.number-people span {
+.number-people label {
   font: 700 16px 'Space mono';
   color: hsl(186, 14%, 43%);
   margin-bottom: 10px;
@@ -207,7 +177,6 @@ input[type=number] {
   top: 14px;
   width: 14px;
 }
-
 
 .input-people input {
   width: 100%;
@@ -228,13 +197,11 @@ input[type=number] {
 
 .result {
   background-color: var(--g1);
-  /* width: 100%; */
   width: 416px;
-  /* max-width: 416px; */
   border-radius: 20px;
-  margin: 32px 32px 32px 16px;
+  margin-left: 15px;
   display: flex;
-  padding: 55px 40px 40px 40px;
+  padding: 42px 40px 40px 40px;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -242,11 +209,12 @@ input[type=number] {
 .total, .tip-amount {
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 60px;   */
 }
 
-.tip-amount {
-  margin-bottom: 15px;
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .tip-amount, .total {
@@ -267,7 +235,6 @@ input[type=number] {
 
 .person-detail {
   opacity: 40%;
-  /* font-size: 14px; */
 }
 
 .reset button{
@@ -286,4 +253,65 @@ input[type=number] {
   background-color: var(--g3);
   color: var(--g1);
   transition: .3s;
+}
+
+
+.error {
+  border: 2px solid red;
+}
+
+
+
+@media(max-width: 1000px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    border-radius: 30px 30px 0 0;
+    gap: 32px;
+  }
+
+  .bill {
+    padding: 8px;
+    background-color: white;
+    gap: 32px;
+  }
+
+  .result {
+    margin-left: 0px;
+    gap: 32px;
+    padding: 38px 25px 24px 24px;
+  }
+}
+
+@media(max-width:515px) {
+  .logo {
+    padding: 1.5rem 1rem;
+  }
+  .content {
+    width: 100%;
+  }
+  .percent-value {
+    grid-template-columns: 1fr 1fr;
+  }
+  .result {
+    width: 100%;
+    border-radius: 15px;
+  }
+  #amount-value, #total-value {
+    font: 700 2.4rem 'Space mono';
+  }
+  .values {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tip-amount span:first-child, .total span:first-child{
+    font: 700 14px 'Space mono';
+    color: var(--white);
+  }
+  .reset button{
+    font: 700 20px 'Space mono';
+  }
 }
