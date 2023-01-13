@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de gorjeta</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+
+    <div class="logo"> 
+      <img src="images/logo.svg" alt="">
+    </div>
+
+    <div class="content">
+    
+      <div class="bill">
+        <div class="value-input">
+          <span>Valor da conta</span>
+          <div class="input">
+            <img src="images/icon-dollar.svg" alt="">
+            <input type="number" name='number' class='bill-number' placeholder="0">
+          </div>
+        </div>
+        <div class="select-tip">
+          <span>Selecione a gorjeta (%)</span>
+          <div class="percent-value">
+            <button class="percents-selects" value="5">5%</button>
+            <button class="percents-selects" value="10">10%</button>
+            <button class="percents-selects" value="15">15%</button>
+            <button class="percents-selects" value="25">25%</button>
+            <button class="percents-selects" value="50">50%</button>
+            <input type="number" placeholder="Outro" class="percents-selects custom">
+          </div>
+
+        </div>
+        <div class="number-people">
+          <span>Número de pessoas</span>
+          <div class="input-people">
+            <img src="images/icon-person.svg" alt="">
+            <input type="number" name='number' class='people-number' placeholder="0">
+          </div>
+        </div>
+      </div>
+  
+      <div class="result">
+        <div class="values">
+          <div class="tip-amount">
+            <span>Valor<br> da gorjeta</span>
+            <span id="amount-value">$0.00</span>
+          </div>
+          <div class="total">
+            <span>Total<br> <span class="person-detail">por pessoa</span> </span>
+            <span id="total-value">$0.00</span>
+          </div>
+        </div>
+        <div class="reset">
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
